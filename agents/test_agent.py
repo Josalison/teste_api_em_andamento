@@ -6,7 +6,7 @@ class AgenteTestador:
         self.timeout = timeout
         self.headers = HEADERS
 
-    def requisicao(self, endpoint):
+    def fazer_requisicao(self, endpoint):
         url_completa = self.url + endpoint
         resposta = requests.get(url_completa, headers=self.headers, timeout= self.timeout)
         return resposta
