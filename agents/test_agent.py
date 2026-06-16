@@ -11,7 +11,7 @@ class AgenteTestador:
         self.headers = HEADERS
         load_dotenv()
         genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-        self.modelo = genai.GenerativeModel("gegemini-1.5-flash")
+        self.modelo = genai.GenerativeModel("gemini-1.5-flash")
 
 
     
