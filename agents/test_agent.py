@@ -17,7 +17,7 @@ class AgenteTestador:
         url_completa = self.url + endpoint
         resposta = requests.get(url_completa, headers=self.headers, timeout=self.timeout)
         dados = resposta.json()
-        promt = f"""
+        prompt = f"""
         Você é um especialista em testes de API.
         Analise essa resposta de uma requisição GET:
         
@@ -30,7 +30,7 @@ class AgenteTestador:
         
         Responda em português de forma clara e objetiva.
         """
-        analise = self.modelo.generate_content(promt)
+        analise = self.modelo.generate_content(prompt)
         return resposta, analise.text
     
 
