@@ -3,6 +3,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import os
 from config.settings import API_URL, timeout, HEADERS
+import time
 
 class AgenteTestador:
     def __init__(self):
@@ -11,7 +12,7 @@ class AgenteTestador:
         self.headers = HEADERS
         load_dotenv()
         genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-        self.modelo = genai.GenerativeModel("gemini-1.5-flash")
+        self.modelo = genai.GenerativeModel("gemini-2.0-flash")
 
     def get(self, endpoint):
         url_completa = self.url + endpoint
@@ -30,6 +31,7 @@ class AgenteTestador:
         
         Responda em português de forma clara e objetiva.
         """
+        time.sleep(4)
         analise = self.modelo.generate_content(prompt)
         return resposta, analise.text
     
