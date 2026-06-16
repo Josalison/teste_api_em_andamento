@@ -1,13 +1,17 @@
 import requests
+import google.generativeai as genai
+from dotenv import load_dotenv
+import os
 from config.settings import API_URL, timeout, HEADERS
+
 class AgenteTestador:
     def __init__(self):
         self.url = API_URL
         self.timeout = timeout
         self.headers = HEADERS
+        load_dotenv()
+        genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+        self.modelo = genai.GenerativeModel("gegemini-1.5-flash")
 
-    def fazer_requisicao(self, endpoint):
-        url_completa = self.url + endpoint
-        resposta = requests.get(url_completa, headers=self.headers, timeout= self.timeout)
-        return resposta
+
     
